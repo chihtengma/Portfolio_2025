@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Portfolio Preview](src/assets/images/hero-image.jpg)
+<!-- ![Portfolio Preview](src/assets/images/hero-image.jpg) -->
 
 A modern, minimalist single-page portfolio website built with Next.js and Tailwind CSS.
 
