@@ -29,6 +29,8 @@ const Hero: FC = () => {
 	// This is used to create the parallax effect on the image
 	const { scrollYProgress } = useScroll({
 		target: scrollingDiv,
+		// 'start end': The parallax effect starts when the top of the scrollingDiv is at the start of the viewport
+		// 'end end': The parallax effect ends when the bottom of the scrollingDiv is at the end of the viewport
 		offset: ['start end', 'end end']
 	});
 
