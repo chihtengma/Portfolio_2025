@@ -61,7 +61,7 @@ const Header: FC = () => {
 				- visible/invisible: Ensures transitions work (unlike hidden)
 			*/}
 			<div
-				className={`fixed top-0 left-0 w-full bg-stone-900 transition-all duration-500 ease-in-out ${isOpen ? 'h-full opacity-100 visible' : 'h-0 opacity-0 invisible'
+				className={`fixed top-0 left-0 w-full bg-stone-900 transition-all duration-500 ease-in-out z-10 ${isOpen ? 'h-full opacity-100 visible' : 'h-0 opacity-0 invisible'
 					}`}
 			>
 				<nav className='mt-20 flex flex-col'>
@@ -90,7 +90,7 @@ const Header: FC = () => {
 				</nav>
 			</div>
 			{/* mix-blend-difference: What this does is it makes the background color of the header transparent. So the LOGO to make the backround color transparent, so the logo is visible on the background of the page  */}
-			<div className="fixed left-0 top-0 w-full mix-blend-difference backdrop-blur-md">
+			<div className="fixed left-0 top-0 w-full mix-blend-difference backdrop-blur-md z-10">
 				<div className="container !max-w-full">
 					<div className="flex h-20 items-center justify-between">
 						{/* Left Side: Logo */}
@@ -103,7 +103,7 @@ const Header: FC = () => {
 				</div>
 			</div>
 			{/* Since we don't want the button and menu affected by the mix-blend-differnce and backdrop-blur-mid, we need to put it in a new div */}
-			<div className="fixed left-0 top-0 w-full">
+			<div className="fixed left-0 top-0 w-full z-10">
 				<div className="container !max-w-full">
 					<div className="flex h-20 items-center justify-end">
 						{/* Right Side: Navbar and Contact Me Button */}
