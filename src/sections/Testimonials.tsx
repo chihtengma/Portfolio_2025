@@ -1,9 +1,12 @@
-import { FC } from 'react';
+'use client';
+
+import Image from 'next/image';
+import { FC, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 import image1 from '@/assets/images/testimonial-1.jpg';
 import image2 from '@/assets/images/testimonial-2.jpg';
 import image3 from '@/assets/images/testimonial-3.jpg';
-import Image from 'next/image';
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [
@@ -39,13 +42,22 @@ const testimonials = [
 const Testimonials: FC = () => {
   const testimonialIndex = 0;
 
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: titleRef,
+    offset: ["start end", "end start"]
+  })
+
+  const transformTop = useTransform(scrollYProgress, [0, 1], ['0%', '-15%']);
+  const transformBottom = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
+
   return (
     <section className="section" id='testimonials'>
-      <h2 className="flex flex-col overflow-hidden text-4xl md:text-7xl lg:text-8xl">
-        <span className="whitespace-nowrap">Some nice words from my past clients</span>
-        <span className="self-end whitespace-nowrap text-red-orange-500">
+      <h2 className="flex flex-col overflow-hidden text-4xl md:text-7xl lg:text-8xl" ref={titleRef}>
+        <motion.span className="whitespace-nowrap relative z-10" style={{ x: transformBottom }}>Some nice words from my past clients</motion.span>
+        <motion.span className="self-end whitespace-nowrap text-red-orange-500 relative z-0" style={{ x: transformTop }}>
           Some nice words from my past clients
-        </span>
+        </motion.span>
       </h2>
       <div className="container">
         <div className="mt-20">
