@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState, MouseEvent } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
 import Button from '@/components/Button';
@@ -42,6 +42,18 @@ const Hero: FC = () => {
 		entranceAnimation();
 	}, [entranceAnimation])
 
+	const handleViewWorksClick = (ev: MouseEvent<HTMLAnchorElement>) => {
+		ev.preventDefault();
+
+		const href = ev.currentTarget.getAttribute('href');
+		if (!href) return;
+
+		const targetElement = document.querySelector(href);
+		if (!targetElement) return;
+
+		targetElement.scrollIntoView({ behavior: 'smooth' });
+	};
+
 	return (
 		<section>
 			<div className="grid items-stretch md:h-screen md:grid-cols-12 sticky top-0">
@@ -54,46 +66,48 @@ const Hero: FC = () => {
 						<div className="mt-10 flex flex-col items-start gap-6 md:flex-row md:items-center">
 							{/* Both buttons have a delay to start the animation after the title */}
 							<motion.div initial={{ opacity: 0, y: '100%' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5, delay: 1.75 }}>
-								<Button
-									variant="secondary"
-									iconAfter={
-										// Duplicate the icon to create a hover animation that moves the icon from left to right
-										<div className='overflow-hidden size-5'>
-											<div className='h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500'>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													strokeWidth="1.5"
-													stroke="currentColor"
-													className="size-5"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-													/>
-												</svg>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													strokeWidth="1.5"
-													stroke="currentColor"
-													className="size-5"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
-													/>
-												</svg>
+								<a href="#projects" onClick={handleViewWorksClick}>
+									<Button
+										variant="secondary"
+										iconAfter={
+											// Duplicate the icon to create a hover animation that moves the icon from left to right
+											<div className='overflow-hidden size-5'>
+												<div className='h-5 w-10 flex group-hover/button:-translate-x-1/2 transition-transform duration-500'>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														fill="none"
+														viewBox="0 0 24 24"
+														strokeWidth="1.5"
+														stroke="currentColor"
+														className="size-5"
+													>
+														<path
+															strokeLinecap="round"
+															strokeLinejoin="round"
+															d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+														/>
+													</svg>
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														fill="none"
+														viewBox="0 0 24 24"
+														strokeWidth="1.5"
+														stroke="currentColor"
+														className="size-5"
+													>
+														<path
+															strokeLinecap="round"
+															strokeLinejoin="round"
+															d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+														/>
+													</svg>
+												</div>
 											</div>
-										</div>
-									}
-								>
-									<span>View My Works</span>
-								</Button>
+										}
+									>
+										<span>View My Works</span>
+									</Button>
+								</a>
 							</motion.div>
 							<motion.div initial={{ opacity: 0, y: '100%' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5, delay: 2.2 }} className='gap-2 group'>
 								<Button

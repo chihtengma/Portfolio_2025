@@ -18,11 +18,7 @@ const navItems = [
 	  label: 'Testimonials',
 	  href: '#testimonials',
   },
-  {
-	  label: 'FAQs',
-	  href: '#faqs',
-  },
-  {
+	{
 	  label: 'Contact',
 	  href: '#contact',
   },
@@ -38,6 +34,18 @@ const Header: FC = () => {
 	const handleClickNavItem = (ev: MouseEvent<HTMLAnchorElement>) => {
 		ev.preventDefault();
 		setIsOpen(false);
+
+		const href = ev.currentTarget.getAttribute('href');
+		if (!href) return;
+
+		const targetElement = document.querySelector(href);
+		if (!targetElement) return;
+
+		targetElement.scrollIntoView({ behavior: 'smooth' });
+	}
+
+	const handleContactMeClick = (ev: MouseEvent<HTMLAnchorElement>) => {
+		ev.preventDefault();
 
 		const href = ev.currentTarget.getAttribute('href');
 		if (!href) return;
@@ -145,9 +153,11 @@ const Header: FC = () => {
 								</svg>
 							</button>
 							{/* Contact Me Button: hidden on mobile */}
-							<Button variant="primary" className="hidden md:inline-flex">
+							<a href="#contact" onClick={handleContactMeClick}>
+								<Button variant="primary" className="hidden md:inline-flex" >
 								Contact Me
 							</Button>
+							</a>
 						</div>
 					</div>
 				</div>
