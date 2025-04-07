@@ -1,4 +1,3 @@
-import FAQs from '@/sections/FAQs';
 import Hero from '@/sections/Hero';
 import Intro from '@/sections/Intro';
 import Footer from '@/sections/Footer';
@@ -15,7 +14,6 @@ export default function Home() {
       <Skills />
       <Projects />
       <Testimonials />
-      <FAQs />
       <Footer />
     </>
   );

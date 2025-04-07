@@ -1,18 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import SplitType from 'split-type';
 import { FC, useEffect, useRef, useState } from 'react';
-import { useAnimate, motion, stagger, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 
 import Button from '@/components/Button';
 import heroImage from '@/assets/images/hero-image.jpg';
+import useTextRevealAnimation from '@/hooks/useTextRevealAnimation';
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const Hero: FC = () => {
-	const [titleScope, animateTitle] = useAnimate();
-	const scrollingDiv = useRef<HTMLDivElement>(null);
 	const [isMobile, setIsMobile] = useState(false);
+	const scrollingDiv = useRef<HTMLDivElement>(null);
+	const { scope, entranceAnimation } = useTextRevealAnimation();
 
 	// Check if we're on mobile, prevents the parallax effect on mobile.
 	useEffect(() => {
@@ -40,15 +39,8 @@ const Hero: FC = () => {
 	// Inside global.css we have the styles for the line set to overflow-hidden and the word set to translate-y-full
 	// This allows us to create a typewriter effect when the words are animated
 	useEffect(() => {
-		new SplitType(titleScope.current, { types: 'lines,words', tagName: 'span' })
-
-		animateTitle(titleScope.current.querySelectorAll('.word'), {
-			transform: 'translateY(0)',
-		}, {
-			duration: .5,
-			delay: stagger(0.2)
-		})
-	})
+		entranceAnimation();
+	}, [entranceAnimation])
 
 	return (
 		<section>
@@ -56,7 +48,7 @@ const Hero: FC = () => {
 				{/* Text & Button */}
 				<div className="flex flex-col justify-center md:col-span-7">
 					<div className="container !max-w-full">
-						<motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={titleScope} className="mt-40 text-5xl md:mt-0 md:text-6xl lg:text-7xl">
+						<motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} ref={scope} className="mt-40 text-5xl md:mt-0 md:text-6xl lg:text-7xl">
 							From pixels to power: Engineering digital experiences that leave a mark
 						</motion.h1>
 						<div className="mt-10 flex flex-col items-start gap-6 md:flex-row md:items-center">
@@ -103,8 +95,29 @@ const Hero: FC = () => {
 									<span>View My Works</span>
 								</Button>
 							</motion.div>
-							<motion.div initial={{ opacity: 0, y: '100%' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5, delay: 2.2 }}>
-								<Button variant="text">Let&apos;s Talk</Button>
+							<motion.div initial={{ opacity: 0, y: '100%' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .5, delay: 2.2 }} className='gap-2 group'>
+								<Button
+									variant="primary"
+									onClick={() => window.open('/assets/documents/resume.pdf', '_blank')}
+								>
+									<div className='flex flex-row justify-center items-center gap-2 hover:border-red-orange-500 transition-colors duration-300'>
+										<span>Download Resume</span>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											strokeWidth="1.5"
+											stroke="currentColor"
+											className="size-5 relative z-10 transition-transform duration-300 group-hover:translate-y-0.5"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+											/>
+										</svg>
+									</div>
+								</Button>
 							</motion.div>
 						</div>
 					</div>
