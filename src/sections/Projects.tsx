@@ -1,33 +1,38 @@
 import { FC } from 'react';
 import Image from 'next/image';
 
-import image1 from '@/assets/images/project-1.jpg';
-import image2 from '@/assets/images/project-2.jpg';
-import image3 from '@/assets/images/project-3.jpg';
-import image4 from '@/assets/images/project-4.jpg';
-import image5 from '@/assets/images/project-5.jpg';
+import image1 from '@/assets/images/project-1.jpeg';
+import image2 from '@/assets/images/project-2.jpeg';
+import image3 from '@/assets/images/project-3.jpeg';
+import image4 from '@/assets/images/project-4.jpeg';
+import image5 from '@/assets/images/project-5.jpeg';
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const projects = [
 	{
-		name: 'Artisan Brew Co.',
+		name: 'Evently',
 		image: image1,
+		link: "https://github.com/chihtengma/event-platform"
 	},
 	{
-		name: 'Wavelength Studios',
+		name: 'Portfolio',
 		image: image2,
+		link: "https://github.com/chihtengma/Portfolio_2025"
 	},
 	{
-		name: 'Nova Fitness',
+		name: 'NASA Mission',
 		image: image3,
+		link: "https://github.com/chihtengma/NASA-PROJECT"
 	},
 	{
-		name: 'Urban Plates',
+		name: 'Podium Sports',
 		image: image4,
+		link: "https://github.com/Sports-Management-FSA/cap_sports_management"
 	},
 	{
-		name: 'Bloom Botanicals',
+		name: 'Meow Market',
 		image: image5,
+		link: "https://github.com/jerryc-jpg/MeowMarket"
 	},
 ];
 
@@ -37,9 +42,11 @@ const Projects: FC = () => {
 			<div className="container">
 				<h2 className="text-4xl md:text-7xl lg:text-8xl">Selected Works</h2>
 				<div className="md:mt16 mt-10 lg:mt-20">
-					{projects.map(({ name, image }) => (
+					{projects.map(({ name, image, link }) => (
 						<a
-							href="#"
+							href={link}
+							target="_blank"
+							rel="noopener noreferrer"
 							key={name}
 							className="flex flex-col border-t border-dotted border-stone-400 py-6 last:border-b md:py-8 lg:py-10 relative group/project"
 						>
