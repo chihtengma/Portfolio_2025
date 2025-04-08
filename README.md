@@ -20,7 +20,7 @@ A modern, minimalist single-page portfolio website built with Next.js and Tailwi
 - 🎯 Smooth scrolling navigation
 - 🖼️ Project showcase section
 - 👥 Testimonials section
-- ❓ FAQ section
+- ❓ Skills section
 - 📝 Contact form
 - 🌙 Dark mode support (coming soon)
 
