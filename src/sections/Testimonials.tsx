@@ -11,20 +11,20 @@ import image3 from '@/assets/images/testimonial-3.jpg';
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [
 	{
-		name: 'Sarah Chen',
-		company: 'Pixel Perfect',
-		role: 'Head of Design',
+		name: 'Shiyang Chen',
+		company: 'Octane',
+		role: 'Software Engineer',
 		quote:
-			"Alex's expertise in both technical development and design created a beautiful, high-performing website.",
+			"Ivan's exceptional logical thinking and has excellent problem-solving skills. Working with him is a breeze, as he effortlessly tackles challenges and delivers outstanding results.",
 		image: image1,
 		imagePositionY: 0.2,
 	},
 	{
-		name: 'Marcus Rodriguez',
-		company: 'Craft Coffee Co.',
-		role: 'Founder',
+		name: 'Wenxu Chen',
+		company: 'Hoover & Strong',
+		role: 'Software Engineer',
 		quote:
-			'Alex transformed our boutique coffee brand with a website that perfectly balances aesthetics and functionality.',
+			'Ivan is a passionate, solutions-driven engineer who blends creativity with precision—always curious, always improving, and always ready to tackle the next big challenge.',
 		image: image2,
 		imagePositionY: 0.1,
 	},
@@ -94,7 +94,7 @@ const Testimonials: FC = () => {
 
 	return (
 		<section className="section" id='testimonials'>
-			<h2 className="flex flex-col overflow-hidden text-4xl md:text-7xl lg:text-8xl" ref={titleRef}>
+			<h2 className="flex flex-col overflow-hidden text-7xl lg:text-8xl" ref={titleRef}>
 				<motion.span className="whitespace-nowrap relative z-10" style={{ x: transformBottom }}>Some nice words from my colleagues and friends</motion.span>
 				<motion.span className="self-end whitespace-nowrap text-red-orange-500 relative z-0" style={{ x: transformTop }}>
 					Some nice words from my colleagues and friends

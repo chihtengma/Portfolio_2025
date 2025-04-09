@@ -56,7 +56,7 @@ const Testimonial = (props: TestimonialProps & HTMLAttributes<HTMLDivElement>) =
 				/>
 			</div>
 			<blockquote className="md:col-span-3">
-				<div className="mt-8 text-3xl md:mt-0 md:text-5xl lg:text-6xl" ref={quoteScope}>
+				<div className="mt-8 text-3xl md:mt-0 md:text-4xl lg:text-5xl" ref={quoteScope}>
 					<span>&ldquo;</span>
 					{quote}
 					<span>&rdquo;</span>
