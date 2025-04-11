@@ -4,9 +4,9 @@ import { FC, useRef, useState, useCallback } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 
 import Testimonial from '@/components/Testimonial';
-import image1 from '@/assets/images/testimonial-1.jpg';
-import image2 from '@/assets/images/testimonial-2.jpg';
-import image3 from '@/assets/images/testimonial-3.jpg';
+import image1 from '@/assets/images/testimonial-1.jpeg';
+import image2 from '@/assets/images/testimonial-2.jpeg';
+import image3 from '@/assets/images/testimonial-3.jpeg';
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const testimonials = [
@@ -29,11 +29,11 @@ const testimonials = [
 		imagePositionY: 0.1,
 	},
 	{
-		name: 'Emily Watson',
-		company: 'Studio Minimal',
-		role: 'Creative Director',
+		name: 'Daniel Kioko',
+		company: 'Orlando O. Spencer',
+		role: 'Chief Technology Officer',
 		quote:
-			'The collaborative process was amazing. Alex brought lots of fresh perspectives and innovative solutions.',
+			'ChihTeng possesses an excellent understanding of APIs and complex backend systems, and his problem-solving abilities are top-notch. Beyond his technical skills, he’s an awesome team player who collaborates effectively and always brings a positive attitude to the table.',
 		image: image3,
 		imagePositionY: 0.55,
 	},
